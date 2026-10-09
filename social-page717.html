@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>عصب صادق 1447هـ | المنصة الرسمية</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #070202;
+            color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* دمج الإضاءة الحمراء العلوية خلف الصورة */
+        .ambient-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 500px;
+            height: 450px;
+            background: radial-gradient(circle at 50% 15%, #5a0b0e 0%, transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* تنسيق صورة البروفايل */
+        .profile-container {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            border: 2px solid #5a0b0e;
+            padding: 3px;
+            background-color: #070202;
+            margin: 40px auto 20px auto;
+            box-shadow: 0 0 30px rgba(90, 11, 14, 0.4);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* تنسيق بطاقات التواصل الاجتماعي */
+        .link-card {
+            background-color: #0f0707;
+            border: 1px solid #331111;
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .link-card:active {
+            transform: scale(0.98);
+            border-color: #d63031;
+        }
+
+        .icon-circle {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        /* زر المشاركة */
+        .share-btn {
+            border: 1px solid #331111;
+            background-color: transparent;
+            color: #ffffff;
+            border-radius: 9999px;
+            padding: 8px 24px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 10px auto 20px auto;
+            transition: border-color 0.2s ease;
+        }
+
+        .share-btn:active {
+            border-color: #d63031;
+        }
+
+        /* تحسين استجابة لمس الكلمة السرية */
+        .secret-target {
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* نافذة الإشعار (Toast) للنسخ فقط */
+        .toast {
+            position: fixed;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(15, 7, 7, 0.95);
+            border: 1px solid #5a0b0e;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 100;
+            transition: bottom 0.4s ease;
+        }
+        .toast.show {
+            bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- التوهج الخلفي -->
+    <div class="ambient-glow"></div>
+
+    <div class="w-full max-w-[420px] px-6 flex flex-col pt-2 pb-10 flex-grow z-10">
+        
+        <!-- صورة البروفايل -->
+        <div id="profile-trigger" class="profile-container">
+            <img id="profile-image" src="profile.png" alt="Profile" class="profile-img" onerror="this.src='profile.png'">
+        </div>
+
+        <!-- العنوان الرئيسي -->
+        <h1 class="text-center font-bold text-3xl mb-1 mt-2 tracking-tight">
+            <span style="color: #d63031;">عصب</span> صادق 1447هـ
+        </h1>
+
+        <!-- الوصف (Subtitle) -->
+        <p class="text-center text-[13px] mb-8 font-medium px-2" style="color: #888888;">
+            المنصة الرسمية | لحسابات التواصل الإجتماعي 1447هـ - 2026
+        </p>
+
+        <!-- روابط منصات التواصل -->
+        <div class="flex flex-col w-full">
+            
+            <a href="https://www.tiktok.com/@h71k7?_r=1&_t=ZS-9AHQl6VIN1O" class="link-card" target="_blank">
+                <i class="fa-solid fa-chevron-left text-[#555] text-sm"></i>
+                <div class="flex items-center gap-4">
+                    <span class="font-bold text-[15px]">تيك توك (TikTok)</span>
+                    <div class="icon-circle"><i class="fa-brands fa-tiktok text-white"></i></div>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/h71k7?stkn=MXQ3emxleHd0a285ZQ%3D%3D&utm_source=qr" class="link-card" target="_blank">
+                <i class="fa-solid fa-chevron-left text-[#555] text-sm"></i>
+                <div class="flex items-center gap-4">
+                    <span class="font-bold text-[15px]">إنستغرام (Instagram)</span>
+                    <div class="icon-circle"><i class="fa-brands fa-instagram text-white"></i></div>
+                </div>
+            </a>
+
+            <a href="https://t.me/h71k7" class="link-card" target="_blank">
+                <i class="fa-solid fa-chevron-left text-[#555] text-sm"></i>
+                <div class="flex items-center gap-4">
+                    <span class="font-bold text-[15px]">تلجرام (Telegram)</span>
+                    <div class="icon-circle"><i class="fa-brands fa-telegram text-white"></i></div>
+                </div>
+            </a>
+
+            <a href="https://x.com/h71k7?s=11&t=wSVTUeZblMNwkG-YdugVqA" class="link-card" target="_blank">
+                <i class="fa-solid fa-chevron-left text-[#555] text-sm"></i>
+                <div class="flex items-center gap-4">
+                    <span class="font-bold text-[15px]">إكس (X)</span>
+                    <div class="icon-circle"><i class="fa-brands fa-x-twitter text-white"></i></div>
+                </div>
+            </a>
+
+            <a href="https://www.facebook.com/share/19hFkUdq58/?mibextid=wwXIfr" class="link-card" target="_blank">
+                <i class="fa-solid fa-chevron-left text-[#555] text-sm"></i>
+                <div class="flex items-center gap-4">
+                    <span class="font-bold text-[15px]">فيسبوك (Facebook)</span>
+                    <div class="icon-circle"><i class="fa-brands fa-facebook-f text-white"></i></div>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="w-full flex flex-col items-center pb-8 mt-auto z-10">
+        <button id="share-btn" class="share-btn">
+            مشاركة رابط الموقع
+            <i class="fa-solid fa-share-nodes" style="color: #d63031;"></i>
+        </button>
+
+        <div class="text-center font-bold text-[15px] mb-1 text-white">
+            عصب صادق 1447هـ
+        </div>
+
+        <!-- النص الذي يفعل الوضع السري -->
+        <div id="secret-text" class="secret-target text-[12px] font-medium py-2 px-6" style="color: #666666;">
+            جميع الحقوق محفوظة 2026
+        </div>
+    </footer>
+
+    <!-- نافذة تعديل الصورة (مخفية) -->
+    <div id="secret-modal" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-6 backdrop-blur-sm">
+        <div class="bg-[#0f0707] border border-[#331111] rounded-2xl w-full max-w-sm p-6">
+            <h3 class="text-white font-bold text-center mb-6 text-lg">تحديث الصورة</h3>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[#888] text-sm mb-2">الرابط المباشر للصورة:</label>
+                    <input type="url" id="image-url-input" class="w-full bg-[#070202] border border-[#331111] rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-[#d63031] text-left dir-ltr" placeholder="https://...">
+                </div>
+
+                <div class="text-center text-[#555] text-sm font-bold my-2">أو</div>
+
+                <div>
+                    <label class="block text-[#888] text-sm mb-2">رفع من الجهاز:</label>
+                    <input type="file" id="image-file-input" accept="image/*" class="w-full text-sm text-[#888] file:mr-0 file:ml-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-bold file:bg-[#331111] file:text-white hover:file:bg-[#5a0b0e] cursor-pointer">
+                </div>
+            </div>
+
+            <div class="flex gap-3 mt-8">
+                <button id="save-modal-btn" class="flex-1 bg-[#d63031] text-white font-bold py-3 rounded-xl text-sm active:scale-95 transition-transform">حفظ وإغلاق</button>
+                <button id="close-modal-btn" class="flex-1 bg-transparent border border-[#331111] text-white font-bold py-3 rounded-xl text-sm active:scale-95 transition-transform">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- إشعار المشاركة -->
+    <div id="toast-notification" class="toast flex items-center gap-3 shadow-2xl">
+        <span id="toast-message">تم نسخ الرابط!</span>
+        <i class="fa-solid fa-circle-check text-[#d63031]"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const profileImage = document.getElementById('profile-image');
+            const profileTrigger = document.getElementById('profile-trigger');
+            const secretText = document.getElementById('secret-text');
+            const secretModal = document.getElementById('secret-modal');
+            const btnCloseModal = document.getElementById('close-modal-btn');
+            const btnSaveModal = document.getElementById('save-modal-btn');
+            const inputUrl = document.getElementById('image-url-input');
+            const inputFile = document.getElementById('image-file-input');
+            const btnShare = document.getElementById('share-btn');
+            const toast = document.getElementById('toast-notification');
+            const toastMessage = document.getElementById('toast-message');
+
+            // 1. تحميل الصورة المحفوظة (إن وجدت)
+            const savedImage = localStorage.getItem('asab_profile_image');
+            if (savedImage) {
+                profileImage.src = savedImage;
+            }
+
+            // 2. منطق الوضع السري (صامت تماماً)
+            let secretClicks = 0;
+            let lastClickTime = 0;
+            let isSecretUnlocked = false;
+
+            function handleSecretClick(e) {
+                const currentTime = new Date().getTime();
+                
+                // إذا مر أكثر من 800 مللي ثانية بين الضغطات، يتم تصفير العداد
+                if (currentTime - lastClickTime > 800) {
+                    secretClicks = 0;
+                }
+                
+                secretClicks++;
+                lastClickTime = currentTime;
+
+                // التفعيل عند الضغط 10 مرات متتالية (بدون أي إشعار أو تغيير مرئي)
+                if (secretClicks === 10) {
+                    isSecretUnlocked = true;
+                    secretClicks = 0; // تصفير العداد بعد التفعيل
+                }
+            }
+
+            secretText.addEventListener('touchstart', handleSecretClick, {passive: true});
+            secretText.addEventListener('click', (e) => {
+                if (e.pointerType === 'mouse') handleSecretClick(e);
+            });
+
+            // 3. فتح النافذة المنبثقة إذا كان الوضع السري مفعلاً فقط
+            profileTrigger.addEventListener('click', () => {
+                if (isSecretUnlocked) {
+                    inputUrl.value = '';
+                    inputFile.value = '';
+                    secretModal.classList.remove('hidden');
+                    secretModal.classList.add('flex');
+                }
+            });
+
+            // 4. إغلاق النافذة
+            function closeModal() {
+                secretModal.classList.add('hidden');
+                secretModal.classList.remove('flex');
+            }
+            btnCloseModal.addEventListener('click', closeModal);
+
+            // 5. حفظ الصورة، وإغلاق النظام السري
+            btnSaveModal.addEventListener('click', () => {
+                const urlValue = inputUrl.value.trim();
+                const fileValue = inputFile.files[0];
+
+                if (fileValue) {
+                    // إذا تم رفع ملف
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        applyImageUpdate(e.target.result);
+                    };
+                    reader.readAsDataURL(fileValue);
+                } else if (urlValue) {
+                    // إذا تم وضع رابط
+                    applyImageUpdate(urlValue);
+                } else {
+                    // إغلاق بدون تعديل إذا كانت الحقول فارغة
+                    closeModal();
+                }
+            });
+
+            function applyImageUpdate(newSrc) {
+                profileImage.src = newSrc;
+                try {
+                    localStorage.setItem('asab_profile_image', newSrc);
+                } catch (err) {
+                    console.warn('Storage limit exceeded');
+                }
+                
+                // الإغلاق والقفل التلقائي للوضع السري
+                closeModal();
+                isSecretUnlocked = false;
+                secretClicks = 0;
+            }
+
+            // 6. نظام المشاركة وإظهار الإشعار فقط للنسخ
+            let toastTimer;
+            function showToast(msg) {
+                toastMessage.innerText = msg;
+                toast.classList.add('show');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+
+            btnShare.addEventListener('click', async () => {
+                const currentUrl = window.location.href;
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: 'عصب صادق 1447هـ | المنصة الرسمية',
+                            url: currentUrl
+                        });
+                    } catch (err) {
+                        // تجاهل في حالة الإلغاء
+                    }
+                } else {
+                    try {
+                        await navigator.clipboard.writeText(currentUrl);
+                        showToast('تم نسخ رابط الموقع بنجاح');
+                    } catch (err) {
+                        // طريقة بديلة للنسخ
+                        const textarea = document.createElement('textarea');
+                        textarea.value = currentUrl;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textarea);
+                        showToast('تم نسخ رابط الموقع بنجاح');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
